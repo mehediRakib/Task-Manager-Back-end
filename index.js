@@ -1,5 +1,4 @@
 const app=require('./app');
-const PORT=process.env.PORT || 7050;
-app.listen(PORT,()=>{
-    console.log(`Server create on port ${PORT}`);
+app.listen(7050,()=>{
+    console.log(`Server create on port 7050`);
 })
