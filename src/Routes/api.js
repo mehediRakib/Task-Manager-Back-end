@@ -9,6 +9,12 @@ router.post('/registration',userController.registration);
 router.post('/login',userController.login);
 router.get('/profileDetails',authVerifyMiddleware,userController.profileDetails);
 router.post('/profileUpdate',authVerifyMiddleware,userController.profileUpdate);
+router.get('/Logout',authVerifyMiddleware,userController.Logout);
+
+//Recover Password
+router.post('/Recover-verify-email',userController.RecoverVerifyEmail);
+router.get('/Verify-OTP/:email/:otp',userController.OtpVerify);
+router.post('/reset-password',userController.ResetPassword);
 
 //Task Service
 router.post('/createTask',authVerifyMiddleware,taskController.createTask);

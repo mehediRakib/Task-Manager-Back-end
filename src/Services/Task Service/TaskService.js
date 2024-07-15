@@ -5,6 +5,7 @@ const objectID=mongoose.Types.ObjectId
 const createTaskService=async (req)=> {
     try {
         const reqBody = req.body;
+        console.log(req.headers['email'])
         reqBody.email = req.headers['email'];
         const data = await TaskModel.create(reqBody);
         return {status: 'success', data: data};
