@@ -16,6 +16,7 @@ const xss = require('xss-clean');
 // Database Lib Import
 const mongoose = require('mongoose');
 
+// CORS Configuration
 const corsOptions = {
     origin: [
         'http://localhost:5173',
@@ -23,7 +24,14 @@ const corsOptions = {
     ],
     credentials: true,
     optionsSuccessStatus: 200,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization'
 };
+
+app.use((req, res, next) => {
+    console.log(`CORS check for origin: ${req.header('Origin')}`);
+    next();
+});
 
 app.use(cors(corsOptions));
 
