@@ -17,13 +17,13 @@ const xss = require('xss-clean');
 const mongoose = require('mongoose');
 
 // CORS Configuration
-const corsOption = {
-    origin: ["http://localhost:5173", "https://task-manager-front-h2xibrmng-mehedirakibs-projects.vercel.app"],
-    credentials: true
-};
-app.use(cors(corsOption));
+// const corsOption = {
+//     origin: ["http://localhost:5173", "https://task-manager-front-h2xibrmng-mehedirakibs-projects.vercel.app"],
+//     credentials: true
+// };
+// app.use(cors(corsOption));
 
-// app.use(cors());
+app.use(cors());
 
 // Security Middlewares
 app.use(hpp());
