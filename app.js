@@ -17,22 +17,20 @@ const xss = require('xss-clean');
 const mongoose = require('mongoose');
 
 // CORS Configuration
+
 const corsOptions = {
-    origin: [
-        'http://localhost:5173',
-        'https://task-manager-front-ndaisv1w2-mehedirakibs-projects.vercel.app'
-    ],
+    origin: function (origin, callback) {
+        if (origin === 'http://localhost:5173' || origin === 'https://task-manager-front-ndaisv1w2-mehedirakibs-projects.vercel.app') {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     optionsSuccessStatus: 200,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization'
 };
-
-app.use((req, res, next) => {
-    console.log(`CORS check for origin: ${req.header('Origin')}`);
-    next();
-});
-
 app.use(cors(corsOptions));
 
 // Security Middlewares
