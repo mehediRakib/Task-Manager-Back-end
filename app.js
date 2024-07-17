@@ -19,18 +19,11 @@ const mongoose = require('mongoose');
 // CORS Configuration
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (origin === 'http://localhost:5173' || origin === 'https://task-manager-front-ndaisv1w2-mehedirakibs-projects.vercel.app') {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: '*', // Allow all origins
     credentials: true,
     optionsSuccessStatus: 200,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type,Authorization'
 };
+
 app.use(cors(corsOptions));
 
 // Security Middlewares
