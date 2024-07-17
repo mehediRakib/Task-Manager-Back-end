@@ -19,7 +19,7 @@ const mongoose = require('mongoose');
 // CORS Configuration
 
 const corsOptions = {
-    origin: '*', // Allow all origins
+    origin: ['http://localhost:5173', 'https://task-manager-front-donwyx00z-mehedirakibs-projects.vercel.app'],
     credentials: true,
     optionsSuccessStatus: 200,
 };
