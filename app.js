@@ -17,17 +17,15 @@ const xss = require('xss-clean');
 const mongoose = require('mongoose');
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
-        return callback(null, true);
-    },
+    origin: [
+        'http://localhost:5173',
+        'https://task-manager-front-ndaisv1w2-mehedirakibs-projects.vercel.app'
+    ],
     credentials: true,
     optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
-
-// app.use(cors());
 
 // Security Middlewares
 app.use(hpp());
@@ -36,7 +34,6 @@ app.use(mongoSanitize());
 app.use(helmet());
 
 // Body Parser Implement with increased limit
-
 app.use(bodyParser.json({ limit: '200mb' }));
 app.use(bodyParser.urlencoded({ limit: '200mb', extended: true }));
 
